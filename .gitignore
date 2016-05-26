@@ -10,4 +10,7 @@
 /vendor/
 /bin/
 /composer.phar
+/.composer/
+/Vagrantfile
+/.vagrant/
 /.idea/
