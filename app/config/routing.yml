@@ -1,3 +1,4 @@
-app:
-    resource: "@AppBundle/Controller/"
+hci_core:
+    resource: "@HCICoreBundle/Controller/"
     type:     annotation
+    prefix:   /
