@@ -39,6 +39,7 @@ class CsvToJsonCommand extends ContainerAwareCommand
 
         $this->computeFoodNameWithKeys();
         $this->computeNutrientName();
+        $this->computeNutrientAmount();
 
         return 0;
     }
@@ -83,6 +84,13 @@ class CsvToJsonCommand extends ContainerAwareCommand
         file_put_contents($this->uploadDir .'nutrient_name.json', $jsonStr);
     }
 
+    protected function computeNutrientAmount()
+    {
+        $nutrientAmountJsonArr = $this->parseNutrientAmount();
+        $jsonStr = json_encode($nutrientAmountJsonArr);
+        file_put_contents($this->uploadDir .'nutrient_amount.json', $jsonStr);
+    }
+
     private function parseFoodName()
     {
         // parsing the 'FOOD NAME.csv' file
@@ -113,6 +121,17 @@ class CsvToJsonCommand extends ContainerAwareCommand
         $filePath = $this->uploadDir . 'NUTRIENT NAME.csv';
 
         return $this->parseCsvFile($filePath, ['NutrientID', 'NutrientCode', 'NutrientSymbol', 'NutrientName', 'NutrientDecimals']);
+    }
+
+    private function parseNutrientAmount()
+    {
+        // parsing the 'NUTRIENT AMOUNT.csv' file
+        $filePath = $this->uploadDir . 'NUTRIENT AMOUNT.csv';
+
+        // TODO: group under the same key 'FoodID' content if needed
+//        $nutrientAmountJsonArr = $this->parseCsvFile($filePath, ['FoodID', 'NutrientID', 'NutrientValue'], false);
+
+        return $this->parseCsvFile($filePath, ['FoodID', 'NutrientID', 'NutrientValue'], false);
     }
 
     /**
