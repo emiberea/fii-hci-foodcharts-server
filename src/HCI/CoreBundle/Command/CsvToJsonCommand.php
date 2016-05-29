@@ -120,7 +120,7 @@ class CsvToJsonCommand extends ContainerAwareCommand
         // parsing the 'NUTRIENT NAME.csv' file
         $filePath = $this->uploadDir . 'NUTRIENT NAME.csv';
 
-        return $this->parseCsvFile($filePath, ['NutrientID', 'NutrientCode', 'NutrientSymbol', 'NutrientName', 'NutrientDecimals']);
+        return $this->parseCsvFile($filePath, ['NutrientID', 'NutrientCode', 'NutrientSymbol', 'NutrientUnit', 'NutrientName', 'NutrientDecimals']);
     }
 
     private function parseNutrientAmount()
