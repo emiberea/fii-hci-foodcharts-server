@@ -128,9 +128,6 @@ class CsvToJsonCommand extends ContainerAwareCommand
         // parsing the 'NUTRIENT AMOUNT.csv' file
         $filePath = $this->uploadDir . 'NUTRIENT AMOUNT.csv';
 
-        // TODO: group under the same key 'FoodID' content if needed
-//        $nutrientAmountJsonArr = $this->parseCsvFile($filePath, ['FoodID', 'NutrientID', 'NutrientValue'], false);
-
         return $this->parseCsvFile($filePath, ['FoodID', 'NutrientID', 'NutrientValue'], false);
     }
 
